@@ -12,11 +12,11 @@ import {
 } from './pages';
 
 const MainLayout = () => (
-  <>
+  <div className='px-4 lg:mx-auto lg:max-w-7xl'>
     <Navbar />
     <Outlet />
     <Footer />
-  </>
+  </div>
 );
 
 const router = createBrowserRouter([
