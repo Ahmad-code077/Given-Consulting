@@ -1,4 +1,10 @@
+import { Carousel } from '../component';
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Carousel />
+    </>
+  );
 };
 export default Home;
