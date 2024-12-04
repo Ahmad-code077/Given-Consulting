@@ -78,6 +78,7 @@ const Navbar = () => {
         ))}
         <div className='hidden lg:flex space-x-4'>
           <Link to={'/login'}>
+
             <BorderButton text={'Login'} color={'black'} />
           </Link>
           <Link to={'/signup'}>
@@ -127,6 +128,7 @@ const Navbar = () => {
 
           <Link to={'/login'} className='block w-full '>
             <BorderButton text={'Login'} color={'black'} />
+
           </Link>
 
           <Link to={'/signup'} className='block w-full '>
