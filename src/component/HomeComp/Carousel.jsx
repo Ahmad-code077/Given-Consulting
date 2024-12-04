@@ -44,10 +44,10 @@ const Carousel = () => {
             <div className='flex items-center justify-center gap-4 text-white'>
               <Button
                 className='text-white hover:text-black'
-                // this approach is not working to give the color to the button
                 text={'Get Started'}
+                color={'white'}
               />
-              <FilledButton text={'Contact Us'} />
+              <FilledButton text={'Contact Us'} color={'black'} />
             </div>
           </main>
         </div>

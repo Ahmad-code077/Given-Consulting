@@ -78,7 +78,7 @@ const Navbar = () => {
         ))}
         <div className='hidden lg:flex space-x-4'>
           <Link to={'/login'}>
-            <BorderButton text={'Login'} />
+            <BorderButton text={'Login'} color={'black'} />
           </Link>
           <Link to={'/signup'}>
             <FilledButton text={'Signup'} />
@@ -87,7 +87,7 @@ const Navbar = () => {
       </main>
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 z-10  bg-white text-black shadow-lg transform ${
+        className={`fixed top-0 left-0 h-full w-64 z-50  bg-white text-black shadow-lg transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-300 ease-in-out lg:hidden`}
       >
@@ -126,7 +126,7 @@ const Navbar = () => {
           ))}
 
           <Link to={'/login'} className='block w-full '>
-            <BorderButton text={'Login'} />
+            <BorderButton text={'Login'} color={'black'} />
           </Link>
 
           <Link to={'/signup'} className='block w-full '>
