@@ -9,7 +9,7 @@ const HumanResources = () => {
         img={banner}
         text={'The best learners are also teachers'}
         desc={
-          'Keep it concise: A slogan should be short and simple, making it easier for people to remember'
+          'Keep it concise: A slogan should be short and simple, making it easier for people to remember Hello world'
         }
       />
       <ConnectWorld />
