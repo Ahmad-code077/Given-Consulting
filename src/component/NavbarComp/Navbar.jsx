@@ -62,7 +62,7 @@ const Navbar = () => {
               {item.title}
             </Link>
             {item.dropDownList && (
-              <div className='absolute left-0 top-5 hidden mt-2  shadow-lg group-hover:block w-max'>
+              <div className='absolute left-0 top-5 hidden mt-2  shadow-lg group-hover:block w-max z-20 bg-white'>
                 {item.dropDownList.map((dropItem) => (
                   <Link
                     key={dropItem.id}
@@ -78,7 +78,6 @@ const Navbar = () => {
         ))}
         <div className='hidden lg:flex space-x-4'>
           <Link to={'/login'}>
-
             <BorderButton text={'Login'} color={'black'} />
           </Link>
           <Link to={'/signup'}>
@@ -128,7 +127,6 @@ const Navbar = () => {
 
           <Link to={'/login'} className='block w-full '>
             <BorderButton text={'Login'} color={'black'} />
-
           </Link>
 
           <Link to={'/signup'} className='block w-full '>

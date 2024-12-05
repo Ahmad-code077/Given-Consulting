@@ -1,13 +1,21 @@
-import ConnectWorld from "../component/Connect/ConnectWorld";
-import CotactUs from "../component/Connect/CotactUs";
-import OurCompany from "../component/Connect/OurCompany";
+import { ConnectWorld, CotactUs, HeroBanner, OurCompany } from '../component';
+
+import banner from '../assets/ConnectImage/connectBanner.png';
 
 const HumanResources = () => {
-  
-  return <div>
-      <ConnectWorld/>
-      <OurCompany/>
-      <CotactUs/>
-  </div>;
+  return (
+    <div>
+      <HeroBanner
+        img={banner}
+        text={'The best learners are also teachers'}
+        desc={
+          'Keep it concise: A slogan should be short and simple, making it easier for people to remember'
+        }
+      />
+      <ConnectWorld />
+      <OurCompany />
+      <CotactUs />
+    </div>
+  );
 };
 export default HumanResources;

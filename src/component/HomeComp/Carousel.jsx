@@ -15,6 +15,7 @@ const Carousel = () => {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
+
   // Function to go to the previous image
   const prevSlide = () => {
     setCurrentIndex(
@@ -32,16 +33,16 @@ const Carousel = () => {
           className='w-full h-full object-cover rounded-md'
         />
         {/* Text Overlay */}
-        <div className='absolute inset-0 flex items-center text-white  bg-black bg-opacity-50 justify-between font-roboto'>
-          <main className='mx-4  max-w-96'>
-            <h1 className=' text-5xl font-semibold leading-snug'>
-              Most Affordable way to Ship Product{' '}
+        <div className='absolute inset-0 flex items-center justify-between bg-black bg-opacity-50 font-roboto'>
+          <main className='mx-4 max-w-96 text-white'>
+            <h1 className='text-5xl font-semibold leading-snug'>
+              Most Affordable way to Ship Product
             </h1>
             <p className='text-lg font-semibold'>
               Keep it concise: A slogan should be short and simple, making it
-              easier for people to remember
+              easier for people to remember.
             </p>
-            <div className='flex items-center justify-center gap-4 text-white'>
+            <div className='flex items-center justify-center gap-4'>
               <Button
                 className='text-white hover:text-black'
                 text={'Get Started'}
@@ -50,20 +51,29 @@ const Carousel = () => {
               <FilledButton text={'Contact Us'} color={'black'} />
             </div>
           </main>
+
+          {/* Glassmorphism Card */}
+          <div className='bg-white bg-opacity-10 backdrop-blur-sm shadow-lg rounded-xl p-6 mx-4 max-w-xs hidden md:block'>
+            <h2 className='text-2xl font-semibold text-white'>Fast Delivery</h2>
+            <p className='text-white text-opacity-80 mb-4'>
+              Your package will be delivered in 4 days
+            </p>
+
+            <img src={img2} alt='' />
+          </div>
         </div>
       </div>
 
       {/* Navigation buttons */}
-      <div className='absolute bottom-6 right-4  flex gap-4'>
+      <div className='absolute bottom-6 right-4 flex gap-4'>
         <IoIosArrowDropleft
           size={'50px'}
           onClick={prevSlide}
-          className='text-[#FFFFFF85]'
+          className='text-[#FFFFFF85] cursor-pointer'
         />
-
         <IoIosArrowDropright
           size={'50px'}
-          className='text-[#FFFFFF85]'
+          className='text-[#FFFFFF85] cursor-pointer'
           onClick={nextSlide}
         />
       </div>

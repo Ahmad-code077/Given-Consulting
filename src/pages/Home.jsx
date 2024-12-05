@@ -1,5 +1,6 @@
 import { Carousel, Gateway, Services } from '../component';
 import About from '../component/HomeComp/About';
+import Reviews from '../component/HomeComp/Reviews';
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Services />
       <Gateway />
       <About />
+      <Reviews />
     </>
   );
 };
