@@ -4,6 +4,9 @@ import Austra from '../assets/ServicePictures/Australia.png';
 import cana from '../assets/ServicePictures/Canada.png';
 import ireland from '../assets/ServicePictures/Ireland.png';
 import newzea from '../assets/ServicePictures/New zealand.png';
+import solution from '../assets/ServicePictures/solution.png';
+
+import { HeroBanner } from '../component';
 
 const Services = () => {
   const CountryCards = [
@@ -96,59 +99,69 @@ const Services = () => {
   ];
 
   return (
-    <div className='main-par'>
-      <div className='mt-10'>
-        <h2 className='text-3xl font-roboto'>
-          Your Dream Study Destination Awaits
-        </h2>
-        <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
-        <p className='text-sm mt-3 font-judson'>
-          Begin an exciting academic journey in these varied and welcoming study
-          locations!
-        </p>
-      </div>
+    <>
+      <HeroBanner
+        img={solution}
+        text={'Solutions crafted for success'}
+        desc={'Here You meet with best consultants!! '}
+      />
+      <div className='main-par'>
+        <div className='mt-10'>
+          <h2 className='text-3xl font-roboto'>
+            Your Dream Study Destination Awaits
+          </h2>
+          <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
+          <p className='text-sm mt-3 font-judson'>
+            Begin an exciting academic journey in these varied and welcoming
+            study locations!
+          </p>
+        </div>
 
-      <div className='grid md:grid-cols-3 gap-10 my-9 mx-5'>
-        {CountryCards.map((data) => {
-          return (
-            <div className='relative' key={data.id}>
-              <img src={data.img} alt='' />
-              <div className='absolute bottom-5 w-36 text-center left-1/2 -translate-x-1/2 text-lg font-semibold text-text-color font-roboto'>
-                {data.title}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className='mt-10 font-roboto'>
-        <h2 className='text-3xl'>How We can help you?</h2>
-        <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 my-9 mx-5 gap-10'>
-          {HelpCards.map((carddata) => {
+        <div className='grid md:grid-cols-3 gap-10 my-9 mx-5'>
+          {CountryCards.map((data) => {
             return (
-              <div
-                className='card px-6 h-72 pt-20 border-[1.5px] rounded-2xl bg-text-color opacity-75 border-black'
-                key={carddata.id}
-              >
-                <h1 className='text-xl font-bold'>{carddata.title}</h1>
-                <p className='text-sm mt-4'>{carddata.desc}</p>
+              <div className='relative' key={data.id}>
+                <img src={data.img} alt='' />
+                <div className='absolute bottom-5 w-36 text-center left-1/2 -translate-x-1/2 text-lg font-semibold text-text-color font-roboto'>
+                  {data.title}
+                </div>
               </div>
             );
           })}
         </div>
-      </div>
-      <div className='mt-10 font-roboto'>
-        <h2 className='text-3xl'>Popular courses among Pakistani students</h2>
-        <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
-        <div className='flex flex-wrap justify-center items-center md:gap-x-72 gap-7 lg:gap-y-16 md:gap-y-12 my-9 md:mx-20 mx-0'>
-          {Buttons.map((btn) => (
-            <button className='px-6 py-3 bg-content-bg border border-black text-white text-lg font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-200'>
-              {btn.text}
-            </button>
-          ))}
+        <div className='mt-10 font-roboto'>
+          <h2 className='text-3xl'>How We can help you?</h2>
+          <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
+          <div className='grid lg:grid-cols-3 md:grid-cols-2 my-9 mx-5 gap-10'>
+            {HelpCards.map((carddata) => {
+              return (
+                <div
+                  className='card px-6 h-72 pt-20 border-[1.5px] rounded-2xl bg-text-color opacity-75 border-black'
+                  key={carddata.id}
+                >
+                  <h1 className='text-xl font-bold'>{carddata.title}</h1>
+                  <p className='text-sm mt-4'>{carddata.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className='mt-10 font-roboto'>
+          <h2 className='text-3xl'>Popular courses among Pakistani students</h2>
+          <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
+          <div className='flex flex-wrap justify-center items-center md:gap-x-72 gap-7 lg:gap-y-16 md:gap-y-12 my-9 md:mx-20 mx-0'>
+            {Buttons.map((btn) => (
+              <button
+                className='px-6 py-3 bg-content-bg border border-black text-white text-lg font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-200'
+                key={btn.id}
+              >
+                {btn.text}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Services;
