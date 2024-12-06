@@ -15,9 +15,9 @@ const navList = [
     title: 'Services',
     link: '/services',
     dropDownList: [
-      { id: 78, title: 'Service 1', link: '#service1' },
-      { id: 79, title: 'Service 2', link: '#service2' },
-      { id: 80, title: 'Service 3', link: '#service3' },
+      { id: 78, title: 'Travelling', link: '/service/1' },
+      { id: 79, title: 'Employement', link: '/service/2' },
+      { id: 80, title: 'IT Services', link: '/service/3' },
     ],
   },
   {
