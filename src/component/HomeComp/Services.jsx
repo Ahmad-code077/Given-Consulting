@@ -3,6 +3,7 @@ import image2 from '../../assets/HomePageServices/secondImg.png';
 import image3 from '../../assets/HomePageServices/thirdImg.png';
 import image4 from '../../assets/HomePageServices/fourthImg.png';
 import image5 from '../../assets/HomePageServices/fifthImg.png';
+import { useNavigate } from 'react-router-dom';
 const ourServices = [
   {
     id: 1,
@@ -32,13 +33,21 @@ const ourServices = [
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
+  const handleCardClick = (id) => {
+    navigate(`/service/${id}`);
+  };
   return (
     <section className='bg-gradient-to-b from-white to-[#A5B5DD] '>
       <h1 className='font-judson text-4xl text-center my-12'>Our Services</h1>
       <main className='flex flex-wrap items-center justify-evenly  '>
         {ourServices?.map((item) => {
           return (
-            <div key={item?.id} className='md:mb-12'>
+            <div
+              key={item?.id}
+              className='md:mb-12 cursor-pointer'
+              onClick={() => handleCardClick(item.id)}
+            >
               <div>
                 <img src={item.image} alt='' className='w-full ' />
               </div>

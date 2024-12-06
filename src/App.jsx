@@ -10,6 +10,7 @@ import {
   Login,
   SignUp,
 } from './pages';
+import ServiceDetail from './pages/ServiceDetail';
 
 const MainLayout = () => (
   <div className='px-4 lg:mx-auto lg:max-w-7xl'>
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: '/consultancy', element: <Consultancy /> },
       { path: '/human-resources', element: <HumanResources /> },
       { path: '/import-export', element: <ImprotExport /> },
+      { path: '/service/:id', element: <ServiceDetail /> },
     ],
   },
   {
