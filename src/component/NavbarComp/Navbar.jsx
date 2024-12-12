@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { GiCrossMark } from 'react-icons/gi';
 import BorderButton, { FilledButton } from '../ButtonComponents/BorderButton';
+
 const navList = [
   {
     id: 1,
@@ -13,11 +14,10 @@ const navList = [
   {
     id: 2,
     title: 'Services',
-    link: '/services',
+    link: '#', // This is a dummy link for the "Services" button
     dropDownList: [
-      { id: 78, title: 'Travelling', link: '/service/1' },
-      { id: 79, title: 'Employement', link: '/service/2' },
-      { id: 80, title: 'IT Services', link: '/service/3' },
+      { id: 78, title: 'International', link: '/international' },
+      { id: 79, title: 'IT Services', link: '/it' },
     ],
   },
   {
@@ -41,11 +41,12 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <nav className=' flex items-center justify-between   py-3 text-black '>
+    <nav className='flex items-center justify-between py-3 text-black'>
       {/* Logo */}
-      <div className='text-lg font-bold w-16 h-16 sm:w-20 sm:h-20 '>
+      <div className='text-lg font-bold w-16 h-16 sm:w-20 sm:h-20'>
         <img src={logo} alt='logo' className='w-full h-full object-cover' />
       </div>
+
       {/* Hamburger Menu */}
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -53,16 +54,17 @@ const Navbar = () => {
       >
         <FaBars />
       </button>
+
       {/* Desktop Links */}
       <main className='hidden lg:flex items-center justify-between space-x-8 bg-[#9d9d9d]/30 px-12 py-6 w-[90%] rounded-3xl'>
-        {/* make the glass morphisim effect here  */}
         {navList?.map((item) => (
           <div key={item.id} className='relative group'>
-            <Link to={item?.link} className='text-sm lg:text-xl font-medium '>
+            <Link to={item.link} className='text-sm lg:text-xl font-medium'>
               {item.title}
             </Link>
+            {/* Dropdown for Services */}
             {item.dropDownList && (
-              <div className='absolute left-0 top-5 hidden mt-2  shadow-lg group-hover:block w-max z-20 bg-white'>
+              <div className='absolute left-0 top-5 hidden group-hover:block mt-2 shadow-lg w-max z-20 bg-white'>
                 {item.dropDownList.map((dropItem) => (
                   <Link
                     key={dropItem.id}
@@ -76,6 +78,7 @@ const Navbar = () => {
             )}
           </div>
         ))}
+
         <div className='hidden lg:flex space-x-4'>
           <Link to={'/login'}>
             <BorderButton text={'Login'} color={'black'} />
@@ -85,16 +88,17 @@ const Navbar = () => {
           </Link>
         </div>
       </main>
+
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 z-50  bg-white text-black shadow-lg transform ${
+        className={`fixed top-0 left-0 h-full w-64 z-50 bg-white text-black shadow-lg transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-300 ease-in-out lg:hidden`}
       >
         <div className='flex items-center justify-between p-4'>
-          <div className='text-lg font-bold w-12 h-12  '>
+          <div className='text-lg font-bold w-12 h-12'>
             <img src={logo} alt='logo' className='w-full h-full object-cover' />
-          </div>{' '}
+          </div>
           <button
             onClick={() => setIsSidebarOpen(false)}
             className='text-2xl focus:outline-none'
@@ -105,17 +109,17 @@ const Navbar = () => {
         <div className='flex flex-col space-y-4 px-4'>
           {navList?.map((item) => (
             <div key={item.id} className='relative group'>
-              <Link to={item.link} className='block  font-medium py-2 '>
+              <Link to={item.link} className='block font-medium py-2'>
                 {item.title}
               </Link>
+              {/* Sidebar dropdown */}
               {item.dropDownList && (
                 <div className='pl-4'>
                   {item.dropDownList.map((dropItem) => (
                     <Link
                       key={dropItem.id}
-                      href={dropItem.link}
-                      to={dropItem?.link}
-                      className='block text-sm py-1 '
+                      to={dropItem.link}
+                      className='block text-sm py-1'
                     >
                       {dropItem.title}
                     </Link>
@@ -125,11 +129,11 @@ const Navbar = () => {
             </div>
           ))}
 
-          <Link to={'/login'} className='block w-full '>
+          <Link to={'/login'} className='block w-full'>
             <BorderButton text={'Login'} color={'black'} />
           </Link>
 
-          <Link to={'/signup'} className='block w-full '>
+          <Link to={'/signup'} className='block w-full'>
             <FilledButton text={'Signup'} />
           </Link>
         </div>
