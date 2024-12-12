@@ -1,7 +1,6 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { Footer, Navbar } from './component';
 import {
-  Consultancy,
   Home,
   HumanResources,
   PageNotFound,
@@ -9,6 +8,7 @@ import {
   Login,
   SignUp,
   International,
+  Consulting,
 } from './pages';
 // import ServiceDetail from './pages/ServiceDetail';
 
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/international', element: <International /> },
-      { path: '/consultancy', element: <Consultancy /> },
+      { path: '/consultancy', element: <Consulting /> },
       { path: '/human-resources', element: <HumanResources /> },
       { path: '/import-export', element: <ImprotExport /> },
       // { path: '/service/:id', element: <ServiceDetail /> },
