@@ -7,35 +7,42 @@ import { useNavigate } from 'react-router-dom';
 const ourServices = [
   {
     id: 1,
+    link: 'travelling',
     image: image1,
     title: 'Travelling',
   },
   {
     id: 2,
     image: image2,
+    link: 'employment',
+
     title: 'Employment',
   },
   {
     id: 3,
     image: image3,
+    link: 'it',
+
     title: 'IT Services',
   },
   {
     id: 4,
     image: image4,
     title: 'Consultant',
+    link: 'consultancy',
   },
   {
     id: 5,
     image: image5,
     title: 'Import & Export',
+    link: 'import-export',
   },
 ];
 
 const Services = () => {
   const navigate = useNavigate();
-  const handleCardClick = (id) => {
-    navigate(`/service/${id}`);
+  const handleCardClick = (link) => {
+    navigate(`/${link}`);
   };
   return (
     <section className='bg-gradient-to-b from-white to-[#A5B5DD] '>
@@ -46,7 +53,7 @@ const Services = () => {
             <div
               key={item?.id}
               className='md:mb-12 cursor-pointer'
-              onClick={() => handleCardClick(item.id)}
+              onClick={() => handleCardClick(item.link)}
             >
               <div>
                 <img src={item.image} alt='' className='w-full ' />

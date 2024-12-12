@@ -1,14 +1,14 @@
-import uk from '../assets/ServicePictures/UK.png';
-import us from '../assets/ServicePictures/US.png';
-import Austra from '../assets/ServicePictures/Australia.png';
-import cana from '../assets/ServicePictures/Canada.png';
-import ireland from '../assets/ServicePictures/Ireland.png';
-import newzea from '../assets/ServicePictures/New zealand.png';
-import solution from '../assets/ServicePictures/solution.png';
+import uk from '../assets/InternationalPictures/UK.png';
+import us from '../assets/InternationalPictures/US.png';
+import Austra from '../assets/InternationalPictures/Australia.png';
+import cana from '../assets/InternationalPictures/Canada.png';
+import ireland from '../assets/InternationalPictures/Ireland.png';
+import newzea from '../assets/InternationalPictures/New zealand.png';
+import solution from '../assets/InternationalPictures/solution.png';
 
 import { HeroBanner } from '../component';
 
-const Services = () => {
+const International = () => {
   const CountryCards = [
     {
       id: 1,
@@ -164,4 +164,4 @@ const Services = () => {
     </>
   );
 };
-export default Services;
+export default International;
