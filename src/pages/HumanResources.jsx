@@ -1,8 +1,11 @@
+import { HumanResourceBanner, HumanResourceHero } from '../component';
+
 const HumanResources = () => {
   return (
-    <div>
-      <div>Human resources</div>
-    </div>
+    <>
+      <HumanResourceBanner />
+      <HumanResourceHero />
+    </>
   );
 };
 export default HumanResources;
