@@ -5,8 +5,11 @@ import cana from '../assets/InternationalPictures/Canada.png';
 import ireland from '../assets/InternationalPictures/Ireland.png';
 import newzea from '../assets/InternationalPictures/New zealand.png';
 import solution from '../assets/InternationalPictures/solution.png';
+import Help from '../assets/InternationalPictures/HelpBg.png';
 
 import { HeroBanner } from '../component';
+import { GiMaterialsScience } from 'react-icons/gi';
+import { MdAccountBalance, MdEngineering } from 'react-icons/md';
 
 const International = () => {
   const CountryCards = [
@@ -75,26 +78,24 @@ const International = () => {
     },
   ];
 
-  const Buttons = [
+  const Courses = [
     {
       id: 1,
       text: 'Social Science',
+      icons: <GiMaterialsScience className='text-black' />,
+      desc: 'Unlocking Your Potential',
     },
     {
       id: 2,
       text: 'Accounting',
+      icons: <MdAccountBalance className='text-black' />,
+      desc: 'Driving Measurable Outcomes',
     },
     {
       id: 3,
       text: 'Engineering',
-    },
-    {
-      id: 4,
-      text: 'Pharmacy',
-    },
-    {
-      id: 5,
-      text: 'Doctors',
+      icons: <MdEngineering className='text-black' />,
+      desc: 'Sustainable Transformation',
     },
   ];
 
@@ -132,31 +133,42 @@ const International = () => {
         <div className='mt-10 font-roboto'>
           <h2 className='text-3xl'>How We can help you?</h2>
           <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
-          <div className='grid lg:grid-cols-3 md:grid-cols-2 my-9 mx-5 gap-10'>
-            {HelpCards.map((carddata) => {
-              return (
-                <div
-                  className='card px-6 h-72 pt-20 border-[1.5px] rounded-2xl bg-text-color opacity-75 border-black'
-                  key={carddata.id}
-                >
-                  <h1 className='text-xl font-bold'>{carddata.title}</h1>
-                  <p className='text-sm mt-4'>{carddata.desc}</p>
-                </div>
-              );
-            })}
+          <div className='relative w-full h-full md:h-screen mt-2'>
+            <img
+              src={Help}
+              alt=''
+              className='absolute top-0 left-0 w-full h-full object-cover'
+            />
+
+            <div className='relative inset-0 flex items-center justify-center'>
+              <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-6 my-9 mx-5 text-center'>
+                {HelpCards.map((carddata) => {
+                  return (
+                    <div
+                      className='card px-6 h-64 pt-20 border-[1.5px] rounded-2xl text-text-color bg-black opacity-75 border-black'
+                      key={carddata.id}
+                    >
+                      <h1 className='text-xl font-bold'>{carddata.title}</h1>
+                      <p className='text-sm mt-4'>{carddata.desc}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
         <div className='mt-10 font-roboto'>
           <h2 className='text-3xl'>Popular courses among Pakistani students</h2>
           <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
-          <div className='flex flex-wrap justify-center items-center md:gap-x-72 gap-7 lg:gap-y-16 md:gap-y-12 my-9 md:mx-20 mx-0'>
-            {Buttons.map((btn) => (
-              <button
-                className='px-6 py-3 bg-content-bg border border-black text-white text-lg font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-200'
-                key={btn.id}
-              >
-                {btn.text}
-              </button>
+          <div className='flex flex-wrap justify-center items-center gap-8 my-9'>
+            {Courses.map((course) => (
+              <div className='bg-[#faf7f3] flex flex-col items-center justify-center w-80 h-60'>
+                <p className='text-3xl bg-bodyColor p-4 rounded-full'>
+                  {course.icons}
+                </p>
+                <h1 className='mt-4 text-[#656468] text-xl'>{course.text}</h1>
+                <p className='mt-2 text-[#868487]'>{course.desc}</p>
+              </div>
             ))}
           </div>
         </div>
