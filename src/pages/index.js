@@ -7,3 +7,4 @@ export { default as International } from './International';
 export { default as Consulting } from './Consulting';
 export { default as Login } from './Login';
 export { default as SignUp } from './SignUp';
+export { default as RecruitmentComp } from './RecruitmentComp';
