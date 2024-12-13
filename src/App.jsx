@@ -9,6 +9,7 @@ import {
   Login,
   SignUp,
   International,
+  RecruitmentComp,
 } from './pages';
 // import ServiceDetail from './pages/ServiceDetail';
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       { path: '/consultancy', element: <Consultancy /> },
       { path: '/human-resources', element: <HumanResources /> },
       { path: '/import-export', element: <ImprotExport /> },
-      // { path: '/service/:id', element: <ServiceDetail /> },
+      { path: '/recruitment-comp', element: <RecruitmentComp /> },
     ],
   },
   {

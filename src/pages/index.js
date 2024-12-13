@@ -6,3 +6,4 @@ export { default as ImprotExport } from './ImprotExport';
 export { default as International } from './International';
 export { default as Login } from './Login';
 export { default as SignUp } from './SignUp';
+export { default as RecruitmentComp } from './RecruitmentComp';

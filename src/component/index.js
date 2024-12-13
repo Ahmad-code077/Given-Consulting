@@ -7,3 +7,4 @@ export { default as HeroBanner } from './HomeComp/HeroBanner';
 export { default as ConnectWorld } from './Connect/ConnectWorld';
 export { default as CotactUs } from './Connect/CotactUs';
 export { default as OurCompany } from './Connect/OurCompany';
+export { default as About } from './HomeComp/About';
