@@ -8,3 +8,9 @@ export { default as ConnectWorld } from './Connect/ConnectWorld';
 export { default as CotactUs } from './Connect/CotactUs';
 export { default as OurCompany } from './Connect/OurCompany';
 export { default as About } from './HomeComp/About';
+export { default as HeroCousulting } from './ConsultingComp/Hero';
+export { default as HeroCard } from './ConsultingComp/Cards';
+export { default as Hero } from './HumanResourcesComp/Hero';
+export { default as HumanResourceBanner } from './HumanResourcesComp/Banner';
+export { default as HumanResourceHero } from './HumanResourcesComp/Hero';
+
