@@ -11,6 +11,11 @@ import {
   RecruitmentComp,
   Consulting,
 } from './pages';
+import VerifySignupOtp from './pages/verifySignupOTP';
+import { useMyProfileQuery } from './Redux/userRoutes/userApi';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setProfile } from './Redux/userRoutes/userSlice';
 // import ServiceDetail from './pages/ServiceDetail';
 
 const MainLayout = () => (
@@ -42,8 +47,18 @@ const router = createBrowserRouter([
     path: '/signup',
     element: <SignUp />,
   },
+  {
+    path:'/verify-signup-otp',
+    element:<VerifySignupOtp />
+  }
 ]);
 function App() {
+  const dispatch = useDispatch();
+  const {data:profile} = useMyProfileQuery();
+  useEffect(()=>{
+    dispatch(setProfile(profile?.user))
+    // console.log("app user data---------",profile?.user)
+  },[profile,dispatch]);
   return <RouterProvider router={router} />;
 }
 

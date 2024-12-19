@@ -1,37 +1,53 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { baseUrl } from '../../baseurl';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseUrl } from "../../baseurl";
 
 export const apiSlice = createApi({
-  reducerPath: 'api',
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: `http://localhost:5000/api/v1`,
+    baseUrl: `${baseUrl}/api/v1`,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState()?.auth?.token; 
+      const token = getState()?.auth?.token;
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
     },
-    credentials: 'include', 
+    credentials: "include",
   }),
-  tagTypes: ['Users'],
+  tagTypes: ["Users"],
   endpoints: (builder) => ({
     login: builder.mutation({
-      query: (credentials) => ({
-        url: '/login',
-        method: 'POST',
-        body: credentials,
+      query: (data) => ({
+        url: "/login",
+        method: "POST",
+        body: data,
       }),
     }),
+
     signup: builder.mutation({
       query: (newUser) => ({
-        url: '/signup',
-        method: 'POST',
+        url: "/signup",
+        method: "POST",
         body: newUser,
       }),
     }),
+
+    verifyOTP: builder.mutation({
+      query: ({ email, otp }) => ({
+        url: "/verify-user",
+        method: "POST",
+        body: { email, otp },
+      }),
+    }),
+
+    myProfile:builder.query({
+      query:()=>({
+        url:"/my-profile",
+        method:'GET'
+      })
+    })
   }),
 });
 
 // Export hooks for using in components
-export const { useLoginMutation, useSignupMutation } = apiSlice;
+export const { useLoginMutation, useSignupMutation,useVerifyOTPMutation,useMyProfileQuery } = apiSlice;
