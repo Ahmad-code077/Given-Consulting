@@ -16,6 +16,8 @@ import { useMyProfileQuery } from './Redux/userRoutes/userApi';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setProfile } from './Redux/userRoutes/userSlice';
+import Contact from './pages/contact';
+import MyProfile from './pages/profile/myProfile';
 // import ServiceDetail from './pages/ServiceDetail';
 
 const MainLayout = () => (
@@ -37,6 +39,8 @@ const router = createBrowserRouter([
       { path: '/human-resources', element: <HumanResources /> },
       { path: '/import-export', element: <ImprotExport /> },
       { path: '/recruitment-comp', element: <RecruitmentComp /> },
+      {path:'/contact',element:<Contact />},
+      {path:'/profile',element:<MyProfile />}
     ],
   },
   {

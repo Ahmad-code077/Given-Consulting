@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useLoginMutation } from "../Redux/userRoutes/userApi";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setProfile } from "../Redux/userRoutes/userSlice";
 
 const Login = () => {
   const [login, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -21,14 +24,28 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+
     try {
       const res = await login(formData);
-      console.log("login res------", res);
-      navigate("/");
-      toast.success(res?.data?.message, { position: "top-center" });
+      if (res?.data?.success === true) {
+        dispatch(setProfile(res?.data?.user));
+        navigate("/");
+        toast.success(res?.data?.message || "Login successful!", {
+          position: "top-center",
+        });
+      } else {
+        toast.error(
+          res?.error?.data?.message ||
+            "Something went wrong. Please try again.",
+          { position: "top-center" }
+        );
+      }
     } catch (error) {
-      toast.error(error?.data?.message, { position: "top-center" });
+      const errorMessage =
+        error?.error?.data?.message ||
+        "Something went wrong. Please try again.";
+
+      toast.error(errorMessage, { position: "top-center" });
     }
   };
 
@@ -103,7 +120,7 @@ const Login = () => {
               type="submit"
               className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 text-base sm:text-lg lg:text-xl"
             >
-              {isLoading ? 'Loading...' : 'Sign In'}
+              {isLoading ? "Loading..." : "Sign In"}
             </button>
           </form>
 

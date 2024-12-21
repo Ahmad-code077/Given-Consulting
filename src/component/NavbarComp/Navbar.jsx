@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { GiCrossMark } from 'react-icons/gi';
 import BorderButton, { FilledButton } from '../ButtonComponents/BorderButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLogoutMutation } from '../../Redux/userRoutes/userApi';
+import { toast } from 'react-toastify';
+import { clearProfile, setProfile } from '../../Redux/userRoutes/userSlice';
 
 const navList = [
   {
@@ -39,15 +42,28 @@ const navList = [
 ];
 
 const Navbar = () => {
-
-  // const {profile} = useSelector((state)=>state.user)
-  // console.log('redux profile',profile)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { profile } = useSelector((state) => state.user); // Fetch profile from Redux state
-  console.log("profile data.......",profile)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { profile } = useSelector((state) => state.user);
+  const [logout] = useLogoutMutation();
+  const dispatch = useDispatch();
 
-  // Ensure that the profile object exists before trying to access its properties
+  const handleLogout = async () => {
+    try {
+      const res = await logout();
+      setIsDropdownOpen(false)
+      dispatch(clearProfile());
+      toast.success(res?.message || 'Logout successful', { position: 'top-center' });
+    } catch (error) {
+      toast.error(error?.data?.message || 'Logout failed', { position: 'top-center' });
+    }
+  };
+
   const profileInitial = profile?.name ? profile.name.charAt(0).toUpperCase() : '';
+
+  const handleProfileClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
     <nav className="flex items-center justify-between py-3 text-black">
@@ -56,22 +72,49 @@ const Navbar = () => {
         <img src={logo} alt="logo" className="w-full h-full object-cover" />
       </div>
 
-      {/* Hamburger Menu */}
-      <button
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="block lg:hidden text-2xl focus:outline-none"
-      >
-        <FaBars />
-      </button>
+      {/* Hamburger and Profile Icon */}
+      <div className="flex items-center space-x-4 lg:hidden">
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="block text-2xl focus:outline-none"
+        >
+          <FaBars />
+        </button>
+        {profile && (
+          <div className="relative">
+            <div
+              className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold cursor-pointer"
+              onClick={handleProfileClick}
+            >
+              {profileInitial}
+            </div>
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-32 text-sm z-20">
+                <Link
+                  to="/profile"
+                  className="block px-4 py-2 hover:bg-gray-100"
+                >
+                  My Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="block px-4 py-2 text-left w-full hover:bg-gray-100"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Desktop Links */}
       <main className="hidden lg:flex items-center justify-between space-x-8 bg-[#9d9d9d]/30 px-12 py-6 w-[90%] rounded-3xl">
-        {navList?.map((item) => (
+        {navList.map((item) => (
           <div key={item.id} className="relative group">
             <Link to={item.link} className="text-sm lg:text-xl font-medium">
               {item.title}
             </Link>
-            {/* Dropdown for Services */}
             {item.dropDownList && (
               <div className="absolute left-0 top-5 hidden group-hover:block mt-2 shadow-lg w-max z-20 bg-white">
                 {item.dropDownList.map((dropItem) => (
@@ -88,10 +131,13 @@ const Navbar = () => {
           </div>
         ))}
 
-        {/* Conditional Profile/Logout or Login/Signup */}
-        <div className="hidden lg:flex space-x-4">
+        {/* Profile Section */}
+        <div className="relative md:flex md:space-x-4 md:items-center">
           {profile ? (
-            <div className="w-10 h-10 cursor-pointer rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
+            <div
+              className="w-10 h-10 cursor-pointer rounded-full bg-blue-500 text-white flex items-center justify-center font-bold"
+              onClick={handleProfileClick}
+            >
               {profileInitial}
             </div>
           ) : (
@@ -103,6 +149,23 @@ const Navbar = () => {
                 <FilledButton text={'Signup'} />
               </Link>
             </>
+          )}
+          {isDropdownOpen && (
+            <div className="absolute right-0 mt-32 bg-white shadow-lg rounded-lg w-36 text-sm sm:text-[16px] z-20">
+              <Link
+                to="/profile"
+                onClick={()=>setIsDropdownOpen(false)}
+                className="block px-4 py-2 text-left w-full hover:bg-gray-100 rounded-lg"
+              >
+                My Profile
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="block px-4 py-2 text-left w-full hover:bg-gray-100 rounded-lg"
+              >
+                Logout
+              </button>
+            </div>
           )}
         </div>
       </main>
@@ -125,12 +188,11 @@ const Navbar = () => {
           </button>
         </div>
         <div className="flex flex-col space-y-4 px-4">
-          {navList?.map((item) => (
+          {navList.map((item) => (
             <div key={item.id} className="relative group">
               <Link to={item.link} className="block font-medium py-2">
                 {item.title}
               </Link>
-              {/* Sidebar dropdown */}
               {item.dropDownList && (
                 <div className="pl-4">
                   {item.dropDownList.map((dropItem) => (
@@ -146,22 +208,6 @@ const Navbar = () => {
               )}
             </div>
           ))}
-
-          {profile ? (
-            <div className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
-              {profileInitial}
-            </div>
-          ) : (
-            <>
-              <Link to={'/login'} className="block w-full">
-                <BorderButton text={'Login'} color={'black'} />
-              </Link>
-
-              <Link to={'/signup'} className="block w-full">
-                <FilledButton text={'Signup'} />
-              </Link>
-            </>
-          )}
         </div>
       </div>
     </nav>

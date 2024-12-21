@@ -40,14 +40,37 @@ export const apiSlice = createApi({
       }),
     }),
 
-    myProfile:builder.query({
-      query:()=>({
-        url:"/my-profile",
-        method:'GET'
-      })
-    })
+    myProfile: builder.query({
+      query: () => ({
+        url: "/my-profile",
+        method: "GET",
+      }),
+    }),
+
+    logout: builder.mutation({
+      query: () => ({
+        url: "/logout",
+        method: "POST",
+      }),
+    }),
+
+    deleteMyProfile: builder.mutation({
+      query: () => ({
+        url: "/delete-my-profile",
+        method: "DELETE",
+      }),
+    }),
+
+
   }),
 });
 
 // Export hooks for using in components
-export const { useLoginMutation, useSignupMutation,useVerifyOTPMutation,useMyProfileQuery } = apiSlice;
+export const {
+  useLoginMutation,
+  useSignupMutation,
+  useVerifyOTPMutation,
+  useMyProfileQuery,
+  useLogoutMutation,
+  useDeleteMyProfileMutation
+} = apiSlice;

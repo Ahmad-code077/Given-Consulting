@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { useSignupMutation } from '../Redux/userRoutes/userApi';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setProfile } from '../Redux/userRoutes/userSlice';
 
 const Signup = () => {
   const [signup, { isLoading }] = useSignupMutation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,6 +49,7 @@ const Signup = () => {
 
     try {
       const res = await signup(formData).unwrap();
+      dispatch(setProfile(res?.newUser))
       console.log("Response of signup -------",res)
       toast.success(res.message,{position:'top-center'});
       navigate('/verify-signup-otp', { state: { email: formData.email } });
