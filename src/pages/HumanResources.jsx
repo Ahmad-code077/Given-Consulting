@@ -1,10 +1,11 @@
-import { HumanResourceBanner, HumanResourceHero } from '../component';
+import { HumanResourceBanner } from '../component';
+import TwoResorce from '../component/HumanResourcesComp/Hero';
 
 const HumanResources = () => {
   return (
     <>
       <HumanResourceBanner />
-      <HumanResourceHero />
+      <TwoResorce />
     </>
   );
 };
