@@ -7,7 +7,7 @@ import BorderButton, { FilledButton } from '../ButtonComponents/BorderButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogoutMutation } from '../../Redux/userRoutes/userApi';
 import { toast } from 'react-toastify';
-import { clearProfile, setProfile } from '../../Redux/userRoutes/userSlice';
+import { clearProfile } from '../../Redux/userRoutes/userSlice';
 
 const navList = [
   {
@@ -51,7 +51,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const res = await logout();
-      setIsDropdownOpen(false)
+      setIsDropdownOpen(false);
       dispatch(clearProfile());
       toast.success(res?.message || 'Logout successful', { position: 'top-center' });
     } catch (error) {
@@ -60,6 +60,7 @@ const Navbar = () => {
   };
 
   const profileInitial = profile?.name ? profile.name.charAt(0).toUpperCase() : '';
+  const profilePic = profile?.profilePic.url;
 
   const handleProfileClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -68,8 +69,8 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between py-3 text-black">
       {/* Logo */}
-      <div className="text-lg font-bold w-16 h-16 sm:w-20 sm:h-20">
-        <img src={logo} alt="logo" className="w-full h-full object-cover" />
+      <div className="text-lg font-bold w-16 h-16 sm:w-20 sm:h-20 cursor-pointer" onClick={()=>window.location.href="/"}>
+        <img style={{mixBlendMode:'color-burn'}} src={logo} alt="logo" className="w-full h-full object-cover" />
       </div>
 
       {/* Hamburger and Profile Icon */}
@@ -86,7 +87,11 @@ const Navbar = () => {
               className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold cursor-pointer"
               onClick={handleProfileClick}
             >
-              {profileInitial}
+              {profilePic ? (
+                <img src={profilePic} alt="profile" className="w-full h-full object-cover rounded-full" />
+              ) : (
+                profileInitial
+              )}
             </div>
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-32 text-sm z-20">
@@ -138,7 +143,11 @@ const Navbar = () => {
               className="w-10 h-10 cursor-pointer rounded-full bg-blue-500 text-white flex items-center justify-center font-bold"
               onClick={handleProfileClick}
             >
-              {profileInitial}
+              {profilePic ? (
+                <img src={profilePic} alt="profile" className="w-full h-full object-cover rounded-full" />
+              ) : (
+                profileInitial
+              )}
             </div>
           ) : (
             <>
@@ -154,7 +163,7 @@ const Navbar = () => {
             <div className="absolute right-0 mt-32 bg-white shadow-lg rounded-lg w-36 text-sm sm:text-[16px] z-20">
               <Link
                 to="/profile"
-                onClick={()=>setIsDropdownOpen(false)}
+                onClick={() => setIsDropdownOpen(false)}
                 className="block px-4 py-2 text-left w-full hover:bg-gray-100 rounded-lg"
               >
                 My Profile

@@ -3,7 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user', // Slice name
   initialState: {
-    profile: JSON.parse(localStorage.getItem('profile')) || null, // Initialize from localStorage
+    profile: (() => {
+      const profile = localStorage.getItem('profile');
+      try {
+        return profile ? JSON.parse(profile) : null;
+      } catch (e) {
+        return null; 
+      }
+    })(),
   },
   reducers: {
     setProfile: (state, action) => {

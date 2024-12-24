@@ -61,6 +61,46 @@ export const apiSlice = createApi({
       }),
     }),
 
+    updatePassword: builder.mutation({
+      query: (data) => ({
+        url: "/update-password",
+        method: "PUT",
+        body: data,
+      }),
+    }),
+
+    updateProfile: builder.mutation({
+      query: (data) => ({
+        url: "/update-profile",
+        method: "PUT",
+        body: data,
+      }),
+    }),
+
+    forgotPassword: builder.mutation({
+      query: (email) => ({
+        url: "/forgot-password",
+        method: "PUT",
+        body: email,
+      }),
+    }),
+
+    forgotPasswordVerifyOtp: builder.mutation({
+      query: ({ email, otp }) => ({
+        url: "/verify-otp",
+        method: "PUT",
+        body: { email, otp },
+      }),
+    }),
+
+    resetPassword: builder.mutation({
+      query: ({email,newPassword}) => ({
+        url: "/reset-password",
+        method: "PUT",
+        body: {email,newPassword},
+      }),
+    }),
+
 
   }),
 });
@@ -72,5 +112,10 @@ export const {
   useVerifyOTPMutation,
   useMyProfileQuery,
   useLogoutMutation,
-  useDeleteMyProfileMutation
+  useDeleteMyProfileMutation,
+  useUpdatePasswordMutation,
+  useUpdateProfileMutation,
+  useForgotPasswordMutation,
+  useForgotPasswordVerifyOtpMutation,
+  useResetPasswordMutation
 } = apiSlice;
