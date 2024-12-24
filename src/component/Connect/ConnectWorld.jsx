@@ -27,7 +27,7 @@ export default function ConnectWorld() {
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10  '>
                         {
                             cards.map((data, index) =>
-                                <div className=' bg-lime-50 p-2  shadow-md shadow-black ' key={index}>
+                                <div className=' bg-lime-50 p-2  shadow-md shadow-black rounded-md' key={index}>
                                     <img src={data.img} alt="" />
                                     <div className=' text-center mt-2'>
                                         <h1 className=' font-bold'>{data.name}</h1>

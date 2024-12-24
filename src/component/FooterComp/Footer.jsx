@@ -18,6 +18,12 @@ const Footer = () => {
     { id: 80, title: 'IT Services', link: '/service/3' },
   ];
 
+  const contact = [
+    { id: 1, title: '+92 300 8677267' },
+    { id: 2, title: '+92 303 3380861' },
+    { id: 3, title: '+27 79 573 2438' },
+  ];
+
   return (
     <footer className='bg-gradient-to-b from-gray-800 to-black text-white py-10 mt-12'>
       {/* Top Section */}
@@ -25,7 +31,7 @@ const Footer = () => {
         {/* Logo and About */}
         <div className='mb-8 md:mb-0 md:w-1/3'>
           <img src={logo} alt='logo' className='w-20 h-20 mb-4' />
-          <p className='text-gray-400 text-sm'>
+          <p className='text-gray-400 text-sm w-64'>
             Delivering top-notch services across various domains with
             professionalism and expertise.
           </p>
@@ -60,6 +66,18 @@ const Footer = () => {
                 >
                   {service.title}
                 </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className='md:w-1/3'>
+          <h2 className='text-lg font-bold mb-4'>Contact</h2>
+          <ul>
+            {contact.map((contactItem) => (
+              <li key={contactItem.id} className='mb-2 text-gray-400'>
+                {contactItem.title}
               </li>
             ))}
           </ul>
@@ -108,4 +126,5 @@ const Footer = () => {
   );
 };
 
+// Default export
 export default Footer;

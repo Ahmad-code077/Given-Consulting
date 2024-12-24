@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Contact() {
+  const { profile } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     contactNumber: '',
@@ -22,6 +26,10 @@ function Contact() {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    if(!profile){
+      toast.warn('Please login to send message');
+      navigate('/login');
+    }
     setLoading(true);
     emailjs
       .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current, 'YOUR_PUBLIC_KEY')

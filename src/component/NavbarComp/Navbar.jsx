@@ -121,12 +121,12 @@ const Navbar = () => {
               {item.title}
             </Link>
             {item.dropDownList && (
-              <div className="absolute left-0 top-5 hidden group-hover:block mt-2 shadow-lg w-max z-20 bg-white">
+              <div className="absolute left-0 top-5 hidden group-hover:block mt-2 rounded shadow-lg w-max z-20 bg-white">
                 {item.dropDownList.map((dropItem) => (
                   <Link
                     key={dropItem.id}
                     to={dropItem.link}
-                    className="block px-4 py-2 text-sm hover:bg-btn-yellow"
+                    className="block px-4 py-2 text-md font-semibold hover:bg-btn-yellow rounded"
                   >
                     {dropItem.title}
                   </Link>

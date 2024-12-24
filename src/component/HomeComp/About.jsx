@@ -2,10 +2,10 @@ import AboutImg from '../../assets/HomePageServices/AboutImg.png';
 
 const About = () => {
   return (
-    <section className='mt-20 flex flex-col lg:flex-row lg:gap-40'>
+    <section className='mt-20 flex flex-col lg:flex-row lg:gap-32 mx-10'>
       {/* Image Section */}
-      <div className='hidden lg:block w-1/4'>
-        <img src={AboutImg} alt='About Us' className='w-full object-cover' />
+      <div className='hidden lg:block w-1/3'>
+        <img src={AboutImg} alt='About Us' className='w-full object-cover md:mt-5 rounded h-[80%]' />
       </div>
 
       {/* Main Content */}

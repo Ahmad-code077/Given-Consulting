@@ -8,7 +8,7 @@ const Gateway = () => (
     </h1>
 
     <main className='flex flex-col lg:flex-row'>
-      <div className='bg-[#6899E1] gap-y-24 lg:gap-0 lg:w-3/4 flex items-center lg:items-baseline justify-between  flex-col my-12 py-4 px-6 rounded-s-3xl '>
+      <div className='bg-[#99b8e6] gap-y-24 lg:gap-0 lg:w-3/4 flex items-center lg:items-baseline justify-between  flex-col my-12 py-4 px-6 rounded-s-3xl '>
         <h1 className='text-5xl font-normal'>
           "Your Gateway to International Markets"
         </h1>

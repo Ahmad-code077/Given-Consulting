@@ -22,6 +22,7 @@ import ChangePassword from "./pages/profile/ChangePassword";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import ItServices from "./pages/ItServices";
 // import ServiceDetail from './pages/ServiceDetail';
 
 const MainLayout = () => (
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       { path: "/human-resources", element: <HumanResources /> },
       { path: "/import-export", element: <ImprotExport /> },
       { path: "/recruitment-comp", element: <RecruitmentComp /> },
+      {path:'/it',element:<ItServices/>},
       { path: "/contact", element: <Contact /> },
       { path: "/profile", element: <ProtectedRoute><MyProfile /></ProtectedRoute> },
       { path: "/update-password", element: <ProtectedRoute><ChangePassword /></ProtectedRoute>},
