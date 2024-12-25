@@ -8,10 +8,10 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const location = useLocation();
   const email = location?.state?.email;
-  const [resetPassword,{isLoading}] = useResetPasswordMutation(); 
+  const [resetPassword, { isLoading }] = useResetPasswordMutation();
   const navigate = useNavigate();
 
-  const handleUpdatePassword = async() => {
+  const handleUpdatePassword = async () => {
     if (password !== confirmPassword) {
       toast.error("Passwords do not match!", { position: "top-center" });
       return;
@@ -20,15 +20,22 @@ const ResetPassword = () => {
       toast.warn("Both fields are required.", { position: "top-center" });
       return;
     }
+  
+    if (password.length < 8) {
+      toast.warn("Password must be at least 8 characters long.", { position: "top-center" });
+      return;
+    }
+  
     try {
-        const res = await resetPassword({email,newPassword:password}).unwrap();
-        console.log(res)
-            toast.success(res?.message,{position:'top-center'});
-            navigate('/');
+      const res = await resetPassword({ email, newPassword: password }).unwrap();
+      console.log(res);
+      toast.success(res?.message, { position: "top-center" });
+      navigate('/');
     } catch (error) {
-        toast.error(error?.message,{position:'top-center'})        
+      toast.error(error?.data?.message || "Failed to reset password.", { position: "top-center" });
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen p-6 md:px-36">
@@ -88,9 +95,11 @@ const ResetPassword = () => {
           <div>
             <button
               onClick={handleUpdatePassword}
-              className={`w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 ${isLoading?'cursor-not-allowed':''}`}
+              className={`w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 ${
+                isLoading ? "cursor-not-allowed" : ""
+              }`}
             >
-              {isLoading?'Updating...':'Update Password'}
+              {isLoading ? "Updating..." : "Update Password"}
             </button>
           </div>
         </div>

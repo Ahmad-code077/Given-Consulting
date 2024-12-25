@@ -1,43 +1,43 @@
-import { useState } from 'react';
-import logo from '../../assets/logo.jpg';
-import { Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
-import { GiCrossMark } from 'react-icons/gi';
-import BorderButton, { FilledButton } from '../ButtonComponents/BorderButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLogoutMutation } from '../../Redux/userRoutes/userApi';
-import { toast } from 'react-toastify';
-import { clearProfile } from '../../Redux/userRoutes/userSlice';
+import { useState } from "react";
+import logo from "../../assets/logo.jpg";
+import { Link } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
+import { GiCrossMark } from "react-icons/gi";
+import BorderButton, { FilledButton } from "../ButtonComponents/BorderButton";
+import { useDispatch, useSelector } from "react-redux";
+import { useLogoutMutation } from "../../Redux/userRoutes/userApi";
+import { toast } from "react-toastify";
+import { clearProfile } from "../../Redux/userRoutes/userSlice";
 
 const navList = [
   {
     id: 1,
-    title: 'Home',
-    link: '/',
+    title: "Home",
+    link: "/",
   },
   {
     id: 2,
-    title: 'Services',
-    link: '#',
+    title: "Services",
+    link: "#",
     dropDownList: [
-      { id: 78, title: 'International', link: '/international' },
-      { id: 79, title: 'IT Services', link: '/it' },
+      { id: 78, title: "International", link: "/international" },
+      { id: 79, title: "IT Services", link: "/it" },
     ],
   },
   {
     id: 3,
-    title: 'Consultancy',
-    link: '/consultancy',
+    title: "Consultancy",
+    link: "/consultancy",
   },
   {
     id: 4,
-    title: 'Human Resource',
-    link: '/human-resources',
+    title: "Human Resource",
+    link: "/human-resources",
   },
   {
     id: 5,
-    title: 'Import & Export',
-    link: '/import-export',
+    title: "Import & Export",
+    link: "/import-export",
   },
 ];
 
@@ -53,14 +53,20 @@ const Navbar = () => {
       const res = await logout();
       setIsDropdownOpen(false);
       dispatch(clearProfile());
-      toast.success(res?.message || 'Logout successful', { position: 'top-center' });
+      toast.success(res?.message || "Logout successful", {
+        position: "top-center",
+      });
     } catch (error) {
-      toast.error(error?.data?.message || 'Logout failed', { position: 'top-center' });
+      toast.error(error?.data?.message || "Logout failed", {
+        position: "top-center",
+      });
     }
   };
 
-  const profileInitial = profile?.name ? profile.name.charAt(0).toUpperCase() : '';
-  const profilePic = profile?.profilePic.url;
+  const profileInitial = profile?.name
+    ? profile.name.charAt(0).toUpperCase()
+    : "";
+  const profilePic = profile?.profilePic?.url;
 
   const handleProfileClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -69,12 +75,15 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between py-3 text-black">
       {/* Logo */}
-      <div className="text-lg font-bold w-16 h-16 sm:w-20 sm:h-20 cursor-pointer" onClick={()=>window.location.href="/"}>
-        <img style={{mixBlendMode:'color-burn'}} src={logo} alt="logo" className="w-full h-full object-cover" />
+      <div
+        className="text-lg font-bold w-16 h-16 sm:w-20 sm:h-20 cursor-pointer"
+        onClick={() => (window.location.href = "/")}
+      >
+        <img src={logo} alt="logo" className="w-full h-full object-cover " />
       </div>
 
       {/* Hamburger and Profile Icon */}
-      <div className="flex items-center space-x-4 lg:hidden">
+      <div className="flex items-center space-x-4 lg:hidden flex-row-reverse md:flex-row gap-3">
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="block text-2xl focus:outline-none"
@@ -88,7 +97,11 @@ const Navbar = () => {
               onClick={handleProfileClick}
             >
               {profilePic ? (
-                <img src={profilePic} alt="profile" className="w-full h-full object-cover rounded-full" />
+                <img
+                  src={profilePic}
+                  alt="profile"
+                  className="w-full h-full object-cover rounded-full"
+                />
               ) : (
                 profileInitial
               )}
@@ -144,18 +157,22 @@ const Navbar = () => {
               onClick={handleProfileClick}
             >
               {profilePic ? (
-                <img src={profilePic} alt="profile" className="w-full h-full object-cover rounded-full" />
+                <img
+                  src={profilePic}
+                  alt="profile"
+                  className="w-full h-full object-cover rounded-full"
+                />
               ) : (
                 profileInitial
               )}
             </div>
           ) : (
             <>
-              <Link to={'/login'}>
-                <BorderButton text={'Login'} color={'black'} />
+              <Link to={"/login"}>
+                <BorderButton text={"Login"} color={"black"} />
               </Link>
-              <Link to={'/signup'}>
-                <FilledButton text={'Signup'} />
+              <Link to={"/signup"}>
+                <FilledButton text={"Signup"} />
               </Link>
             </>
           )}
@@ -182,7 +199,7 @@ const Navbar = () => {
       {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full w-64 z-50 bg-white text-black shadow-lg transform ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out lg:hidden`}
       >
         <div className="flex items-center justify-between p-4">
@@ -217,6 +234,27 @@ const Navbar = () => {
               )}
             </div>
           ))}
+        </div>
+        <div className="mt-auto px-4 pb-4">
+          {!profile ? (
+            <div className="flex flex-col space-y-2">
+              <Link to="/login">
+                <BorderButton text="Login" color="black" />
+              </Link>
+              <Link to="/signup">
+                <FilledButton text="Signup" />
+              </Link>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center">
+              <button
+                onClick={handleLogout}
+                className="w-full py-2 bg-red-500 text-white rounded-lg"
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </nav>
