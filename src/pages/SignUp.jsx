@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useSignupMutation } from '../Redux/userRoutes/userApi';
 import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setProfile } from '../Redux/userRoutes/userSlice';
 
 const Signup = () => {
   const [signup, { isLoading }] = useSignupMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,8 +49,10 @@ const Signup = () => {
 
     try {
       const res = await signup(formData).unwrap();
+      dispatch(setProfile(res?.newUser))
+      console.log("Response of signup -------",res)
       toast.success(res.message,{position:'top-center'});
-
+      navigate('/verify-signup-otp', { state: { email: formData.email } });
       setFormData({
         name: '',
         email: '',
@@ -58,7 +65,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-blue-100 px-36 py-5">
+    <div className="flex items-center justify-center min-h-screen bg-blue-100 px-3 py-5 sm:px-36 sm:py-5">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
         {/* Left Side - Image */}
         <div className="md:w-1/2 bg-blue-500">
@@ -161,12 +168,12 @@ const Signup = () => {
           {/* Divider */}
           <div className="mt-6 text-center text-gray-500">
             Already have an account?{' '}
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="text-blue-600 hover:underline font-medium"
             >
               Log In
-            </a>
+            </Link>
           </div>
         </div>
       </div>

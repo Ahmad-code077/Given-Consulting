@@ -111,8 +111,8 @@ const International = () => {
           <h2 className='text-3xl font-roboto'>
             Your Dream Study Destination Awaits
           </h2>
-          <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
-          <p className='text-sm mt-3 font-judson'>
+          <div className='md:w-[15%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
+          <p className='text-sm sm:text-lg mt-3 font-judson'>
             Begin an exciting academic journey in these varied and welcoming
             study locations!
           </p>
@@ -132,7 +132,7 @@ const International = () => {
         </div>
         <div className='mt-10 font-roboto'>
           <h2 className='text-3xl'>How We can help you?</h2>
-          <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
+          <div className='md:w-[15%] h-[7px] w-[15%] bg-red-600 rounded-full mb-6'></div>
           <div className='relative w-full h-full md:h-screen mt-2'>
             <img
               src={Help}
@@ -158,11 +158,11 @@ const International = () => {
           </div>
         </div>
         <div className='mt-10 font-roboto'>
-          <h2 className='text-3xl'>Popular courses among Pakistani students</h2>
-          <div className='md:w-[5%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
+          <h2 className='text-3xl mt-20'>Popular courses among Pakistani students</h2>
+          <div className='md:w-[15%] h-[7px] w-[15%] bg-red-600 rounded-full'></div>
           <div className='flex flex-wrap justify-center items-center gap-8 my-9'>
             {Courses.map((course) => (
-              <div className='bg-[#faf7f3] flex flex-col items-center justify-center w-80 h-60'>
+              <div className='bg-[#faf7f3] flex flex-col items-center justify-center w-80 h-60 rounded'>
                 <p className='text-3xl bg-bodyColor p-4 rounded-full'>
                   {course.icons}
                 </p>

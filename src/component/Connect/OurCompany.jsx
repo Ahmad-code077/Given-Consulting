@@ -1,5 +1,6 @@
 import React from 'react';
 import three from '../../assets/ConnectImage/three.jpg';
+import { Link } from 'react-router-dom';
 
 export default function OurCompany() {
     const ship = [
@@ -43,16 +44,16 @@ export default function OurCompany() {
                                 <h2 className="text-gray-700 font-semibold mb-4 text-center lg:text-left">
                                     {data.get}
                                 </h2>
-                                <button className="bg-[#BCF20B] text-gray-800 font-semibold py-2 px-6 rounded hover:bg-[#A9E10A]">
+                                <Link to='/contact' className="bg-[#BCF20B] text-gray-800 font-semibold py-2 px-6 rounded hover:bg-[#A9E10A]">
                                     {data.btn}
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            <h1 className='  text-center text-3xl'>Contact Us</h1>
+            <h1 className='  text-center text-3xl my-5 md:my-8'>Contact Us</h1>
         </>
     );
 }

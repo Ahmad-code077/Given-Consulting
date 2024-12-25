@@ -45,8 +45,8 @@ const Services = () => {
     navigate(`/${link}`);
   };
   return (
-    <section className='bg-gradient-to-b from-white to-[#A5B5DD] '>
-      <h1 className='font-judson text-4xl text-center my-12'>Our Services</h1>
+    <section className='bg-gradient-to-b from-white to-[#A5B5DD] rounded'>
+      <h1 className='font-judson text-4xl text-center my-12 pt-6'>Our Services</h1>
       <main className='flex flex-wrap items-center justify-evenly  '>
         {ourServices?.map((item) => {
           return (
