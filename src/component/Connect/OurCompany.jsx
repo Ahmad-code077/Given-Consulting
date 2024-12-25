@@ -19,8 +19,8 @@ export default function OurCompany() {
 
         {/* shipment our company section */}
         
-            <div className="w-full min-h-screen flex justify-center items-center bg-gray-50 ">
-                <div className="w-full max-w-5xl bg-cyan-100  shadow-lg overflow-hidden">
+            <div className="w-full min-h-screen flex justify-center items-center rounded bg-gray-50 ">
+                <div className="w-full max-w-5xl bg-cyan-100  shadow-lg overflow-hidden rounded">
                     {ship.map((data, index) => (
                         <div
                             key={index}

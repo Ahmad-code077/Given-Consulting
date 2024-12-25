@@ -6,7 +6,7 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 const Footer = () => {
   const navList = [
     { id: 1, title: 'Home', link: '/' },
-    { id: 2, title: 'Services', link: '/services' },
+    { id: 2, title: 'Services', link: '/it' },
     { id: 3, title: 'Consultancy', link: '/consultancy' },
     { id: 4, title: 'Human Resource', link: '/human-resources' },
     { id: 5, title: 'Import & Export', link: '/import-export' },
@@ -15,7 +15,7 @@ const Footer = () => {
   const servicesDropdown = [
     { id: 78, title: 'Travelling', link: '/service/1' },
     { id: 79, title: 'Employement', link: '/service/2' },
-    { id: 80, title: 'IT Services', link: '/service/3' },
+    { id: 80, title: 'IT Services', link: '/it' },
   ];
 
   const contact = [
