@@ -13,8 +13,8 @@ const Footer = () => {
   ];
 
   const servicesDropdown = [
-    { id: 78, title: 'Travelling', link: '/service/1' },
-    { id: 79, title: 'Employement', link: '/service/2' },
+    { id: 78, title: 'Travelling', link: '/international' },
+    { id: 79, title: 'Employement', link: '/it' },
     { id: 80, title: 'IT Services', link: '/it' },
   ];
 

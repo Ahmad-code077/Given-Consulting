@@ -23,11 +23,12 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import ItServices from "./pages/ItServices";
-// import ServiceDetail from './pages/ServiceDetail';
+import ScrollToTop from "./ScrollToTop";
 
 const MainLayout = () => (
   <div className="px-4 lg:mx-auto lg:max-w-7xl">
     <Navbar />
+    <ScrollToTop /> {/* Scroll to top on route change */}
     <Outlet />
     <Footer />
   </div>
@@ -44,10 +45,24 @@ const router = createBrowserRouter([
       { path: "/human-resources", element: <HumanResources /> },
       { path: "/import-export", element: <ImprotExport /> },
       { path: "/recruitment-comp", element: <RecruitmentComp /> },
-      {path:'/it',element:<ItServices/>},
+      { path: "/it", element: <ItServices /> },
       { path: "/contact", element: <Contact /> },
-      { path: "/profile", element: <ProtectedRoute><MyProfile /></ProtectedRoute> },
-      { path: "/update-password", element: <ProtectedRoute><ChangePassword /></ProtectedRoute>},
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <MyProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/update-password",
+        element: (
+          <ProtectedRoute>
+            <ChangePassword />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
   {
@@ -65,13 +80,15 @@ const router = createBrowserRouter([
   { path: "/forgot-password", element: <ForgotPassword /> },
   { path: "/reset-password", element: <ResetPassword /> },
 ]);
+
 function App() {
   const dispatch = useDispatch();
   const { data: profile } = useMyProfileQuery();
+
   useEffect(() => {
     dispatch(setProfile(profile?.user));
-    // console.log("app user data---------",profile?.user)
   }, [profile, dispatch]);
+
   return <RouterProvider router={router} />;
 }
 

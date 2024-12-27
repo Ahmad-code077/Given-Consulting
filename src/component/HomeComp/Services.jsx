@@ -53,7 +53,7 @@ const Services = () => {
             <div
               key={item?.id}
               className='md:mb-12 cursor-pointer'
-              onClick={() => handleCardClick(item.link)}
+              // onClick={() => handleCardClick(item.link)}
             >
               <div>
                 <img src={item.image} alt='' className='w-full ' />

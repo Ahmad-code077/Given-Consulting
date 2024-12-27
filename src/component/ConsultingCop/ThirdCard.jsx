@@ -13,7 +13,7 @@ const ThirdCard = () => {
   ];
 
   return (
-    <div className="py-12">
+    <div className="py-0">
       {/* Heading Section */}
       <div className="text-center mb-12 px-2">
         <h1 className="text-4xl font-bold mb-4">Our Proven Approach</h1>

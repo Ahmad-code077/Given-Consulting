@@ -1,5 +1,6 @@
 import { FilledButton } from '../ButtonComponents/BorderButton';
 import exploreImg from '../../assets/HomePageServices/Gateway.png';
+import { Link } from 'react-router-dom';
 
 const Gateway = () => (
   <section>
@@ -21,9 +22,9 @@ const Gateway = () => (
           services.
         </p>
 
-        <div className='w-max'>
+        <Link to="/international" className='w-max'>
           <FilledButton text={'Explore More '} />
-        </div>
+        </Link>
       </div>
       <div className='w-[70vw] lg:w-auto mx-auto'>
         <img src={exploreImg} alt='' className='w-full' />

@@ -4,7 +4,7 @@ import card2pic from '../../assets/consultingimages/card2pic.jpg';
 const FirstCard = () => {
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-center h-screen px-6 my-4">
+      <div className="flex flex-wrap items-center justify-center h-auto px-6 my-4">
         {/* Left Side - Content */}
         <div className="w-full md:w-1/2 text-center md:text-left ">
           <h1 className="text-sm font-bold">Our Services</h1>
