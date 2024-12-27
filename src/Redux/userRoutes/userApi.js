@@ -47,6 +47,7 @@ export const apiSlice = createApi({
       }),
     }),
 
+    
     logout: builder.mutation({
       query: () => ({
         url: "/logout",
